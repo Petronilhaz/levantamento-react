@@ -1,6 +1,5 @@
 import * as S from './style/style'
 import CHIP from '../../images/CHIP.png'
-import USB from '../../images/USB.png'
 
 const Header = () => {
     return(
