@@ -1,6 +1,7 @@
 import { FormContext } from "../../context/context"
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"; 
+import * as S from "./style/index"
 
 const FormCreator = () => {
     const {colunms, setColunms} = useContext(FormContext)
@@ -12,6 +13,7 @@ const FormCreator = () => {
   }));
 
   return (
+    <S.RegisterBox>
     <form onSubmit={handleSubmit(onSubmit)}>
       {colunmsArray.map((colunms, index) => {
         index++;
@@ -30,6 +32,7 @@ const FormCreator = () => {
       })}
       <button type="submit">Criar Levantamento</button>
     </form>
+    </S.RegisterBox>
   );
 };
 

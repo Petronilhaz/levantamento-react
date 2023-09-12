@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form"
 import { useContext, useEffect } from "react"
 import { FormContext } from "../../context/context"
+import * as S from './style/index'
 
-const ColunmsSelector = () => {
+const  ColunmsSelector = ({ isSelectorActive , setIsSelectorActive}) => {
     const { register, handleSubmit } = useForm()
-    const {colunms, setColunms} = useContext(FormContext)
+    const { colunms, setColunms } = useContext(FormContext)
     const onSubmit = data => {
         setColunms(Number(data["colunm-number"]))
         console.log("Data: ", Number(data["colunm-number"]));
@@ -14,7 +15,7 @@ const ColunmsSelector = () => {
             console.log("UseEffect do Colunms: ", colunms);
         }, [colunms])
     return (
-        <>
+        <S.FormBox>
         <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="colunms">Quantas colunas devem haver ?</label>
         <br />
@@ -32,9 +33,9 @@ const ColunmsSelector = () => {
             <option value="9">9</option>
             <option value="10">10</option>
         </select>
-        <button type="submit">Enviar</button>
+        <button type="submit" onClick={()=>setIsSelectorActive(false)}>Enviar</button>
         </form>
-        </>
+        </S.FormBox>
     )
 }
 
