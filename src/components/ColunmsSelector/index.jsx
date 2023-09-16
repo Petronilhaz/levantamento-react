@@ -3,9 +3,10 @@ import { useContext, useEffect } from "react"
 import { FormContext } from "../../context/context"
 import * as S from './style/index'
 
-const  ColunmsSelector = ({ isSelectorActive , setIsSelectorActive}) => {
+const  ColunmsSelector = ({ display }) => {
     const { register, handleSubmit } = useForm()
     const { colunms, setColunms } = useContext(FormContext)
+    const { isSelectorActive, setIsSelectorActive } = useContext(FormContext)
     const onSubmit = data => {
         setColunms(Number(data["colunm-number"]))
         console.log("Data: ", Number(data["colunm-number"]));
@@ -17,23 +18,23 @@ const  ColunmsSelector = ({ isSelectorActive , setIsSelectorActive}) => {
     return (
         <S.FormBox>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="colunms">Quantas colunas devem haver ?</label>
+        <S.Label htmlFor="colunms">Quantas colunas devem haver ?</S.Label>
         <br />
-        <select htmlFor="colunms"
+        <S.Select htmlFor="colunms"
         {...register("colunm-number")}
         >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <button type="submit" onClick={()=>setIsSelectorActive(false)}>Enviar</button>
+            <S.Option value="1">1</S.Option>
+            <S.Option value="2">2</S.Option>
+            <S.Option value="3">3</S.Option>
+            <S.Option value="4">4</S.Option>
+            <S.Option value="5">5</S.Option>
+            <S.Option value="6">6</S.Option>
+            <S.Option value="7">7</S.Option>
+            <S.Option value="8">8</S.Option>
+            <S.Option value="9">9</S.Option>
+            <S.Option value="10">10</S.Option>
+        </S.Select>
+        <S.Button type="submit" onClick={()=>setIsSelectorActive(false)}>Enviar</S.Button>
         </form>
         </S.FormBox>
     )

@@ -1,31 +1,36 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const FormBox = styled.div`
-display: flex;
-justify-content: center; 
+  display: flex;
+  justify-content: center;
+`;
 
- label {
-    font-size: 20px;
- }
- select {
-    width: 100%;
-    height: 50%;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 10px;
+export const Label = styled.label`
+  font-size: 20px;
+`;
 
-    option {
-        font-size: 20px;
-        text-align: center;
-    }
- }
+export const Select = styled.select`
+  width: 100%;
+  height: 50%;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+`;
 
- button {
-      width: 100%;
-      height: 30%;
-      margin-top: 15px;
-       background-color: gray;
-       border: none;
- }
+export const Option = styled.option`
+  font-size: 20px;
+  text-align: center;
+`;
 
-`
+export const Button = styled.button`
+  width: 100%;
+  height: 30%;
+  margin: 15px 0 0 2.5px;
+  padding: 10px 25px;
+  color: white;
+  background-color: gray;
+  border: none;
+  cursor: pointer;
+`;
+
+

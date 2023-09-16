@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FormContext } from "../../context/context";
-
+import { ButtonBox, SubmitButton, ResetButton } from "../FormCreator/style";
+import * as S from "../FormCreator/style/index";
 const UserForm = () => {
-  const { createdForm, setCreatedForm } = useContext(FormContext)
+  const { createdForm, setCreatedForm } = useContext(FormContext);
   const { register, handleSubmit } = useForm();
   const formColunms = [];
   const formArray = Object.entries(createdForm);
@@ -13,20 +14,27 @@ const UserForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {formColunms.map((colunm, index) => {
-        return (
-          <div key={index}>
-            <label htmlFor={colunm}>{colunm}</label>
-            <br />
-            <input type="text" {...register(colunm)} />
-            <br />
-          </div>
-        );
-      })}
+    <S.RegisterBox>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <S.GridBox>
+          {formColunms.map((colunm, index) => {
+            return (
+              <S.InputBox key={index}>
+                <S.Label htmlFor={colunm}>{colunm}</S.Label>
+                <br />
+                <S.Input type="text" {...register(colunm)} />
+                <br />
+              </S.InputBox>
+            );
+          })}
+        </S.GridBox>
 
-      <button type="submit">Registrar</button>
-    </form>
+        <ButtonBox>
+          <ResetButton type="reset">Resetar Campos</ResetButton>
+          <SubmitButton type="submit">Registrar Valores</SubmitButton>
+        </ButtonBox>
+      </form>
+    </S.RegisterBox>
   );
 };
 

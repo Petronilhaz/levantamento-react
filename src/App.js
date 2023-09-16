@@ -9,11 +9,12 @@ import { useContext } from "react";
 function App() {
 
   const { isSelectorActive, setIsSelectorActive } = useContext(FormContext)
+
   return (
     <>
       <FormProvider>
         <Header />
-        <ColunmsSelector  isSelectorActive={isSelectorActive} setIsSelectorActive={setIsSelectorActive} />
+        <ColunmsSelector  display={isSelectorActive} />
         <FormCreator />
         <UserForm />
       </FormProvider>
@@ -34,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-
 `;
 
 export default App;
