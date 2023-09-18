@@ -1,0 +1,10 @@
+
+
+const DataList = () => {
+    
+
+    return(
+        <>
+        </>
+    )
+}

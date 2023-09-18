@@ -1,5 +1,5 @@
 import { FormContext } from "../../context/context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as S from "./style/index";
 
@@ -12,6 +12,10 @@ const FormCreator = () => {
   const colunmsArray = Array.from({ length: colunms }, (_, index) => ({
     id: index + 1,
   }));
+
+  useEffect(()=>{
+    console.log("UseEffect do createdForm: ", createdForm);
+  },[createdForm])
 
   return (
     <S.RegisterBox display={showState.creator}>
