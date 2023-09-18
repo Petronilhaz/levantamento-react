@@ -2,19 +2,16 @@ import { ColunmsSelector } from "./components/ColunmsSelector";
 import { FormCreator } from "./components/FormCreator";
 import { UserForm } from "./components/UserForm";
 import { Header } from "./components/Header";
-import { FormContext, FormProvider } from "./context/context";
+import { FormProvider } from "./context/context";
 import { createGlobalStyle } from "styled-components";
-import { useContext } from "react";
 
 function App() {
-
-  const { isSelectorActive, setIsSelectorActive } = useContext(FormContext)
-
+ 
   return (
     <>
       <FormProvider>
         <Header />
-        <ColunmsSelector  display={isSelectorActive} />
+        <ColunmsSelector />
         <FormCreator />
         <UserForm />
       </FormProvider>

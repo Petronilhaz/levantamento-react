@@ -1,20 +1,20 @@
 import { FormContext } from "../../context/context";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "../ColunmsSelector/style/index";
 import * as S from "./style/index";
 
 const FormCreator = () => {
   const { colunms, setColunms } = useContext(FormContext);
   const { register, handleSubmit } = useForm();
   const { createdForm, setCreatedForm } = useContext(FormContext);
+  const { showState, setShowState } = useContext(FormContext);
   const onSubmit = (data) => setCreatedForm(data);
   const colunmsArray = Array.from({ length: colunms }, (_, index) => ({
     id: index + 1,
   }));
 
   return (
-    <S.RegisterBox>
+    <S.RegisterBox display={showState.creator}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.GridBox>
           {colunmsArray.map((colunms, index) => {
@@ -39,7 +39,7 @@ const FormCreator = () => {
         </S.GridBox>
         <S.ButtonBox>
           <S.ResetButton type="reset">Resetar Campos</S.ResetButton>
-          <S.SubmitButton type="submit">Criar Levantamento</S.SubmitButton>
+          <S.SubmitButton type="submit" onClick={() => setShowState({ selector: false, creator: false, userForm: true})} >Criar Levantamento</S.SubmitButton>
         </S.ButtonBox>
       </form>
     </S.RegisterBox>

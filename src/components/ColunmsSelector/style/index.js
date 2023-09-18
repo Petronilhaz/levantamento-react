@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FormBox = styled.div`
-  display: flex;
+  display: ${ props => props.display === false ? "none" : "flex"};
   justify-content: center;
 `;
 

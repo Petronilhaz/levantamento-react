@@ -5,6 +5,7 @@ import { ButtonBox, SubmitButton, ResetButton } from "../FormCreator/style";
 import * as S from "../FormCreator/style/index";
 const UserForm = () => {
   const { createdForm, setCreatedForm } = useContext(FormContext);
+  const { showState, setShowState } = useContext(FormContext);
   const { register, handleSubmit } = useForm();
   const formColunms = [];
   const formArray = Object.entries(createdForm);
@@ -14,7 +15,7 @@ const UserForm = () => {
   }
 
   return (
-    <S.RegisterBox>
+    <S.RegisterBox display={showState.userForm}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <S.GridBox>
           {formColunms.map((colunm, index) => {

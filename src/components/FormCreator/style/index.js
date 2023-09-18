@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Button } from '../../ColunmsSelector/style/index'
 
 export const RegisterBox = styled.div`
-  display: flex;
+  display: ${props => props.display === false ? "none" : "flex"};
   margin-top: 50px;
 
   form {
