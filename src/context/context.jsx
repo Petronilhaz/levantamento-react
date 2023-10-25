@@ -21,7 +21,7 @@ const FormProvider = ({ children }) => {
 
     return (
         <FormContext.Provider
-            value={{ colunms, setColunms, createdForm, setCreatedForm, showState, setShowState, formData, setFormData }}>
+        value={{colunms, setColunms, createdForm, setCreatedForm, showState, setShowState, formData, setFormData}}>
             {children}
         </FormContext.Provider>
     )

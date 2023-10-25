@@ -15,10 +15,7 @@ const UserForm = () => {
     formColunms.push(formArray[i][1]);
   }
 
-   useEffect(()=>{
-console.log("UseEffect do FormData: ", formData);
-// Object.entries(formData)[increase][1].Nome da coluna)
-   },[formData])
+// Object.entries(formData[increase][1].Nome da coluna)
 
   return (
     <S.RegisterBox display={showState.userForm}>

@@ -4,6 +4,7 @@ import { UserForm } from "./components/UserForm";
 import { Header } from "./components/Header";
 import { FormProvider } from "./context/context";
 import { createGlobalStyle } from "styled-components";
+import { DataList } from "./components/DataList";
 
 function App() {
  
@@ -14,6 +15,7 @@ function App() {
         <ColunmsSelector />
         <FormCreator />
         <UserForm />
+        <DataList />
       </FormProvider>
       <GlobalStyle />
     </>
