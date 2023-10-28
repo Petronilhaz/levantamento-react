@@ -5,6 +5,10 @@ export const FormBox = styled.div`
   justify-content: center;
 `;
 
+export const Form = styled.form`
+  width: 30%;
+`
+
 export const Label = styled.label`
   font-size: 20px;
 `;

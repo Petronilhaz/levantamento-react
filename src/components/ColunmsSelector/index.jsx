@@ -1,6 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useContext, useEffect } from "react";
 import { FormContext } from "../../context/context";
+import { InputBox } from "../FormCreator/style";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField"
+import Button from "@mui/material/Button";
 import * as S from "./style/index";
 
 const ColunmsSelector = () => {
@@ -8,6 +12,7 @@ const ColunmsSelector = () => {
   const { colunms, setColunms } = useContext(FormContext);
   const { isSelectorActive, setIsSelectorActive } = useContext(FormContext);
   const { showState, setShowState } = useContext(FormContext);
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const onSubmit = (data) => {
     setColunms(Number(data["colunm-number"]));
     console.log("Data: ", Number(data["colunm-number"]));
@@ -18,25 +23,40 @@ const ColunmsSelector = () => {
   }, [showState]);
   return (
     <S.FormBox display={showState.selector}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <S.Label htmlFor="colunms">Quantas colunas devem haver ?</S.Label>
-        <br />
-        <S.Select htmlFor="colunms" {...register("colunm-number")}>
-          <S.Option value="1">1</S.Option>
-          <S.Option value="2">2</S.Option>
-          <S.Option value="3">3</S.Option>
-          <S.Option value="4">4</S.Option>
-          <S.Option value="5">5</S.Option>
-          <S.Option value="6">6</S.Option>
-          <S.Option value="7">7</S.Option>
-          <S.Option value="8">8</S.Option>
-          <S.Option value="9">9</S.Option>
-          <S.Option value="10">10</S.Option>
-        </S.Select>
-        <S.Button type="submit" onClick={() => setShowState({ selector: false, create: true, userForm: false})}>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          select
+          label="Quantas colunas devem haver ?"
+          sx={{
+            marginTop: "10px",
+            height: "50%",
+            textAlign: "center",
+            cursor: "pointer",
+          }}
+          fullWidth
+          
+          {...register("colunm-number")}
+        >
+          {numbers.map((n) => {
+            return (
+              <MenuItem value={n} sx={{ textAlign: "center" }}>
+                {n}
+              </MenuItem>
+            );
+          })}
+        </TextField>
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{ marginTop: "10px", textTransform: "capitalize" }}
+          type="submit"
+          onClick={() =>
+            setShowState({ selector: false, create: true, userForm: false })
+          }
+        >
           Enviar
-        </S.Button>
-      </form>
+        </Button>
+      </S.Form>
     </S.FormBox>
   );
 };

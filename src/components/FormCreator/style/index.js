@@ -3,7 +3,7 @@ import { Button } from '../../ColunmsSelector/style/index'
 
 export const RegisterBox = styled.div`
   display: ${props => props.display === false ? "none" : "flex"};
-  margin-top: 50px;
+//  margin-top: 50px;
 
   form {
     width: 100%;
@@ -18,7 +18,7 @@ export const GridBox = styled.div`
 `;
 
 export const InputBox = styled.div`
-  margin: 30px;
+  margin: 10px;
   width: fit-content;
 `;
 

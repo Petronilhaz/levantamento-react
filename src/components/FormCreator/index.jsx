@@ -1,6 +1,8 @@
 import { FormContext } from "../../context/context";
 import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import * as S from "./style/index";
 
 const FormCreator = () => {
@@ -13,9 +15,9 @@ const FormCreator = () => {
     id: index + 1,
   }));
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("UseEffect do createdForm: ", createdForm);
-  },[createdForm])
+  }, [createdForm]);
 
   return (
     <S.RegisterBox display={showState.creator}>
@@ -25,25 +27,49 @@ const FormCreator = () => {
             index++;
             return (
               <S.InputBox key={index}>
-                <S.Label htmlFor={"input-" + index}>
-                  Digite o nome da {index}º coluna
-                </S.Label>
-                <br />
-                <S.Input
+                
+                <TextField
+                  size="small"
+                  label={`Digite o nome da ${index}º coluna`}
+                  // sx={{ marginTop: "10px"}}
+                  fullWidth
                   required
                   id={"input-" + index}
                   type="text"
                   {...register("input-" + index)}
                 />
-                <br />
-                <br />
+                
+                
               </S.InputBox>
             );
           })}
         </S.GridBox>
         <S.ButtonBox>
-          <S.ResetButton type="reset">Resetar Campos</S.ResetButton>
-          <S.SubmitButton type="submit" onClick={() => setShowState({ selector: false, creator: false, userForm: true})} >Criar Levantamento</S.SubmitButton>
+          <Button
+            sx={{
+              marginRight: "2.5px",
+              width: "20%",
+              textTransform: "capitalize",
+            }}
+            variant="contained"
+            type="reset"
+          >
+            Resetar Campos
+          </Button>
+          <Button
+            sx={{
+              marginLeft: "2.5px",
+              width: "20%",
+              textTransform: "capitalize",
+            }}
+            variant="contained"
+            type="submit"
+            onClick={() =>
+              setShowState({ selector: false, creator: false, userForm: true })
+            }
+          >
+            Criar Levantamento
+          </Button>
         </S.ButtonBox>
       </form>
     </S.RegisterBox>
