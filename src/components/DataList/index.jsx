@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
 const DataList = () => {
-  const { formData, setFormData } = useContext(FormContext);
-  const objKeys = [];
+  const { formData } = useContext(FormContext);
   const [columns, setColumns] = useState([]);
 
   useEffect(() => {
+  const objKeys = [];
+
     if (formData[0] !== undefined) {
-      console.log("Log do FormData: ", formData);
       objKeys.push(Object.keys(formData[0]));
     }
 
@@ -18,28 +18,21 @@ const DataList = () => {
       return
       
     }else if (objKeys[0] !== undefined && objKeys[0] !== null) {
-        console.log("Não ta vazio");
         for (let index = 0; index < objKeys[0].length; index++) {
           setColumns((prevState)=>[...prevState,
             {
               field: objKeys[0][index],
               headerName: objKeys[0][index],
-              width: 150,
+              width: 186,
+              headerAlign: "center",
+              headerClassName: "super-app-theme--header",
+              cellClassName: 'super-app-theme--cell',
+              align: "center",
             },
           ]);
         }
       }
-    
-
-    console.log(
-      "FormData: ",
-      formData,
-      "ObjectKeys: ",
-      objKeys[0],
-      "columns: ",
-      columns
-    );
-  }, [formData, objKeys, columns]);
+  }, [formData, columns]);
 
   function gerarId() {
     return Math.random();
@@ -47,19 +40,37 @@ const DataList = () => {
 
   return (
     <>
-      <p>DataList</p>
       {formData.length > 0 ? (
-        <DataGrid rows={formData} getRowId={gerarId} columns={columns} />
+        <DataGrid rows={formData} getRowId={gerarId} columns={columns} 
+        sx={{
+          margin: "20px auto 0",
+          border: "1px solid black",
+          width: "fit-content",
+
+          '& .super-app-theme--header': {
+            fontSize: "16px",
+            border: "1px solid black",
+            borderBottom: "3px solid black",
+
+          },
+          '& .super-app-theme--cell': {
+            border: "0.5px solid black",
+            fontSize: "15px",
+            ":nth-of-type(1n + 1)": {
+              
+            },
+            ":nth-last-of-type(2)": {
+              borderRight: "1px solid black"
+            }
+            
+          }
+        }}
+        />
       ) : (
-        <p>Error</p>
+        null
       )}
     </>
   );
 };
 
 export { DataList };
-
-// <DataGrid
-//         rows={FormData}
-//         columns={columns}
-//         />

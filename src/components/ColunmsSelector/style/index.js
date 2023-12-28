@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const FormBox = styled.div`
   display: ${ props => props.display === false ? "none" : "flex"};
   justify-content: center;
+  align-items: center;
 `;
 
 export const Form = styled.form`
@@ -37,4 +38,7 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-
+export const Span = styled.span`
+  font-size: 12px;
+  color: red;
+`

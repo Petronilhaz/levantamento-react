@@ -1,14 +1,23 @@
-import * as S from './style/style'
-import CHIP from '../../images/CHIP.png'
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
+import { Menu } from '@mui/icons-material'
 
 const Header = () => {
     return(
-        <>
-        <S.Header>
-            <img src={CHIP} alt="CCT" height='100px' />
-            <S.Title>Coordenadoria de Ciência e Tecnologia</S.Title>
-        </S.Header>
-        </>
+        <AppBar
+        position='static'
+        >
+            <Toolbar>
+                <IconButton
+                size='large'
+                color='inherit'
+                edge='start'
+                aria-label='menu'
+                sx={{mr: 2}}>
+                <Menu />
+                </IconButton>
+            <Typography variant='h6' component='div' sx={{flexGrow: 1}}>Criador de Tabelas</Typography>
+            </Toolbar>
+        </AppBar>
     )
 }
 

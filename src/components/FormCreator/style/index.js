@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Button } from '../../ColunmsSelector/style/index'
 
 export const RegisterBox = styled.div`
   display: ${props => props.display === false ? "none" : "flex"};
@@ -37,11 +36,3 @@ export const ButtonBox = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-export const SubmitButton = styled(Button)`
-  width: 20%;
-`
-
-export const ResetButton = styled(SubmitButton)`
-   margin: 15px 2.5px 0 0;
-`

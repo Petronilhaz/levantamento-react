@@ -1,23 +1,22 @@
 import { FormContext } from "../../context/context";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import TextField from "@mui/material/TextField";
+import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import * as S from "./style/index";
 
 const FormCreator = () => {
-  const { colunms, setColunms } = useContext(FormContext);
+  const { colunms } = useContext(FormContext);
   const { register, handleSubmit } = useForm();
-  const { createdForm, setCreatedForm } = useContext(FormContext);
+  const { setCreatedForm } = useContext(FormContext);
   const { showState, setShowState } = useContext(FormContext);
-  const onSubmit = (data) => setCreatedForm(data);
+  const onSubmit = (data) => {
+    setCreatedForm(data);
+    setShowState({ selector: false, creator: false, userForm: true })
+  }
   const colunmsArray = Array.from({ length: colunms }, (_, index) => ({
     id: index + 1,
   }));
-
-  useEffect(() => {
-    console.log("UseEffect do createdForm: ", createdForm);
-  }, [createdForm]);
 
   return (
     <S.RegisterBox display={showState.creator}>
@@ -31,14 +30,13 @@ const FormCreator = () => {
                 <TextField
                   size="small"
                   label={`Digite o nome da ${index}º coluna`}
-                  // sx={{ marginTop: "10px"}}
-                  fullWidth
+                  helperText="Campo obrigatório"
                   required
+                  fullWidth
                   id={"input-" + index}
                   type="text"
-                  {...register("input-" + index)}
+                  {...register("input-" + index )}
                 />
-                
                 
               </S.InputBox>
             );
@@ -64,9 +62,6 @@ const FormCreator = () => {
             }}
             variant="contained"
             type="submit"
-            onClick={() =>
-              setShowState({ selector: false, creator: false, userForm: true })
-            }
           >
             Criar Levantamento
           </Button>
